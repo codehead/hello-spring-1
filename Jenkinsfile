@@ -22,6 +22,7 @@ pipeline {
                 sh '''./mvnw package
 		docker-compose build
 		'''
+	    }
 	}
         stage('Deploy') {
             steps {
