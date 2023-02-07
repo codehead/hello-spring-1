@@ -1,0 +1,7 @@
+version: "3.0"
+services:
+  spring:
+    build: .
+    image: hello-spring
+    ports:
+      - "8080:8080"
