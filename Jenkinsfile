@@ -7,11 +7,9 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                sh '''./mvnw package
-		docker-compose build
-		'''
+                sh './mvnw test'
             }
 		post {
 			always {
@@ -19,6 +17,12 @@ pipeline {
 			}
 		}
         }
+        stage('Build') {
+            steps {
+                sh '''./mvnw package
+		docker-compose build
+		'''
+	}
         stage('Deploy') {
             steps {
                 sh '''docker-compose up -d
